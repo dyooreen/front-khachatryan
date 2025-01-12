@@ -1,0 +1,126 @@
+.treeNode {
+    button {
+        border-bottom: 0.063rem solid var(--primary-color);
+        padding: var(--desktop-padding);
+        width: 100%;
+        background: 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--normal-font-size);
+        align-items: center;
+        height: 100%;
+
+        +div button {
+            font-size: var(--small-font-size) !important;
+        }
+
+        &:has(+div>ul)::after {
+            content: "";
+            background-image: url(/arrow.png);
+            width: 0.625rem;
+            height: 0.375rem;
+            display: flex;
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: 0.3s;
+            transform: rotateZ(-90deg);
+        }
+
+    }
+
+    >div {
+        display: none;
+    }
+
+    .activeNode {
+        display: block
+    }
+
+    .active {
+        color: #969696;
+
+        &::after {
+            transform: rotateZ(0deg);
+        }
+
+    }
+}
+
+
+@media all and (min-width: 650px) {
+
+    .treeNode {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        height: 100%;
+
+        >div>ul>li {
+            padding: 0 var(--desktop-padding);
+
+            &:last-child button{
+                border: 0; 
+            }
+        }
+
+        >div {
+            display: block;
+        }
+
+        >div>ul {
+            z-index: -999;
+        }
+
+        &:hover {
+            >button {
+                color: #969696;
+
+                &::after {
+                    opacity: 0.5;
+                    transform: rotateZ(-90deg);
+                }
+            }
+
+
+            >div>ul {
+                opacity: 1;
+                visibility: visible;
+                transition: 0.3s;
+                z-index: 999;
+            }
+        }
+
+
+        button {
+            background: 0;
+            border: 0;
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--normal-font-size);
+            align-items: center;
+
+            border-bottom: 0.063rem solid var(--primary-color);
+            gap: 0.5rem;
+            height: 100%;
+
+            +div button {
+                font-size: 13px !important;
+            }
+
+            &:has(+div>ul)::after {
+                content: "";
+                background-image: url(/arrow.png);
+                width: 0.625rem;
+                height: 0.375rem;
+                display: flex;
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: 0.3s;
+                transform: rotateZ(0deg);
+            }
+
+        }
+
+    }
+
+}
