@@ -16,7 +16,8 @@ const MenuProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     useEffect(() => {
         (async () => {
-            const res = await getData<MenuType>("/front-khachatryan/menu.json");
+
+            const res = await getData<MenuType>(`menu.json`);
 
             if (res)
                 setMenu(res.menu);
